@@ -1,42 +1,26 @@
-var ball = document.querySelector("#ball");
+let ball = document.querySelector("#ball");
 
 ball.addEventListener("click", changeTheme);
 
-var leftside = true;
+let isBallOnLeftSide = true;
 
-function changeTheme() {
-  if (leftside == true) {
+function changeTheme(event) {
+  if (isBallOnLeftSide) {
     ball.style.left = "40px";
-    document.querySelector("body").style.backgroundColor = "#111111";
-    ball.style.backgroundColor = "#111111";
-    document.querySelector(".mode").style.backgroundColor = "#ffffff";
-    document.querySelector(".links").style.color = "#fff";document.querySelector(".links1").style.color = "#fff";
-   document.querySelector(".links2").style.color = "#fff";
-    document.querySelector(".sh").style.backgroundColor = "#fff";
-    document.querySelector(".nav").style.borde = "#fff";
-    document.querySelector(".a-header").style.color = "#fff";
-    leftside = false;
+    document.body.classList.add("dark-theme"); // Add a CSS class
   } else {
     ball.style.left = "5px";
-    document.querySelector("body").style.backgroundColor = "#ffffff";
-    ball.style.backgroundColor = "#ffffff";
-    document.querySelector(".mode").style.backgroundColor = "#111111";
-    document.querySelector(".sh").style.backgroundColor = "#111";
-    document.querySelector(".links").style.color = "#111";
-    document.querySelector(".links1").style.color = "#111";
-    document.querySelector(".links2").style.color = "#111";
-    document.querySelector(".a-header").style.color = "#111";
-    document.querySelector(".nav").style.border = "#111";
-    leftside = true;
+    document.body.classList.remove("dark-theme"); // Remove the CSS class
   }
+  isBallOnLeftSide = !isBallOnLeftSide; // Toggle the flag
 }
 
 function onpageshow() {
-  const heet = document.querySelector('.heet')
-  heet.style.display = 'flex'
-}
-function onpagehide() {
-  const heet = document.querySelector('.heet')
-  heet.style.display = 'none'
+  const heet = document.querySelector('.heet');
+  heet.style.display = 'flex';
 }
 
+function onpagehide() {
+  const heet = document.querySelector('.heet');
+  heet.style.display = 'none';
+}
